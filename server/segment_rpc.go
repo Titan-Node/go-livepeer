@@ -94,7 +94,7 @@ func (h *lphttp) ServeSegment(w http.ResponseWriter, r *http.Request) {
 	}
 	ctx = clog.AddSeqNo(ctx, uint64(segData.Seq))
 
-	clog.V(common.VERBOSE).Infof(ctx, "Received segment dur=%v", segData.Duration)
+	clog.V(common.SHORT).Infof(ctx, "Received segment dur=%v", segData.Duration)
 
 	if monitor.Enabled {
 		monitor.SegmentEmerged(ctx, 0, uint64(segData.Seq), len(segData.Profiles), segData.Duration.Seconds())

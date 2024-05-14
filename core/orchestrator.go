@@ -620,8 +620,8 @@ func (n *LivepeerNode) transcodeSeg(ctx context.Context, config transcodeConfig,
 			// FIXME: Return the error once everyone has upgraded their nodes
 			// return terr(fmt.Errorf("MissingPerceptualHash"))
 		}
-		clog.V(common.DEBUG).Infof(ctx, "Transcoded segment profile=%s bytes=%d",
-			md.Profiles[i].Name, len(tSegments[i].Data))
+		clog.Errorf(ctx, "Transcoded segment profile=%s bytes=%d pixels=%vpx",
+			md.Profiles[i].Name, len(tSegments[i].Data), int(tSegments[i].Pixels))
 		hash := crypto.Keccak256(tSegments[i].Data)
 		segHashes[i] = hash
 	}
